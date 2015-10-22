@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-  before_action :set_answer, except: [:create]
+  before_action :set_answer, except: [:create, :index]
 
   def create
     @answer = Answer.create(params[answer_params])
@@ -17,17 +17,16 @@ class AnswersController < ApplicationController
   end
 
   def show
-    @answer = Answer.find(:answer_id)
   end
 
   private
 
-  def set_question
+  def set_answer
     @answer = Answer.find(params[:id])
   end
 
   def answer_params
     params.require(:answer).permit(:user_id, :question_id, :description, :upvotes, :downvotes, :accepted)
   end
-  
+
 end
