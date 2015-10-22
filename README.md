@@ -9,6 +9,7 @@ GET /users/id - Show a user's info
 PATCH /users/id - Update a user's info
 
 DELETE /users/id - Destroy a user
+
 ========================================
 
 GET /questions - Show all questions
@@ -20,6 +21,7 @@ GET /questions/id - Show a question's info
 PATCH /questions/id - Update a question's info
 
 DELETE /questions/id - Destroy a question
+
 ========================================
 
 GET /answers - Show all answers
