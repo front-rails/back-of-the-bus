@@ -8,5 +8,7 @@
 
 k = User.create!(name: "Kyle", email: "kyle@example.com", password: "colorado")
 s = User.create!(name: "Stan", email: "stan@example.com", password: "colorado")
-q = Question.create!(user: k, query: "Where am I?", description: "Seriously, you guys!", upvotes: 5, downvotes: 2)
-a = Answer.create!(question: q, user: s, description: "Imagination Land", accepted: true, upvotes: 30, downvotes: 6)
+q = Question.create!(user: k, query: "Where am I?", description: "Seriously, you guys!", upvotes: 5, downvotes: 2, votes_quality: 3)
+q2 = Question.create!(user: k, query: "What day is it?", description: "I really can't remember", upvotes: 35, downvotes: 2, votes_quality: 33)
+Answer.create!(question: q, user: s, description: "Imagination Land", accepted: true, upvotes: 30, downvotes: 6, votes_quality: 24)
+Answer.create!(question: q, user: s, description: "Canada", accepted: true, upvotes: 50, downvotes: 6, votes_quality: 44)
