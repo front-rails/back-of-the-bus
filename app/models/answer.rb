@@ -4,11 +4,11 @@ class Answer < ActiveRecord::Base
   belongs_to :question
 
   def votes_quality
-    @answer.sum(&:upvotes) - @answer.sum(&:downvotes)
+    upvotes - downvotes
   end
 
   def votes_count
-    @answer.upvotes.count + @answer.downvotes.count
+    upvotes + downvotes
   end
 
 end

@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, except: [:create]
+  before_action :set_question, except: [:create, :index]
 
   def create
     @question = Question.create(params[question_params])
@@ -17,7 +17,6 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @question = Question.find(params[:question_id])
   end
 
   private
