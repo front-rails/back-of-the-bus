@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   resources :users, except: [:new, :edit]
+  resources :questions
+  resources :answers
   resources :sessions, only: [:create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
