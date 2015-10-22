@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :questions
+  resources :answers
   resources :sessions, only: [:create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
