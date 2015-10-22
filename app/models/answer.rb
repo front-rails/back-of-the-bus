@@ -3,10 +3,6 @@ class Answer < ActiveRecord::Base
   belongs_to :user
   belongs_to :question
 
-  def votes_quality
-    upvotes - downvotes
-  end
-
   def votes_count
     upvotes + downvotes
   end
