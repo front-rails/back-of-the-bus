@@ -2,22 +2,28 @@ require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
   test "should get create" do
-    get :create
+    post :create, user: {name: "Test",
+        email: "test@example.com",
+        password: "password"},
+        format: :json
     assert_response :success
   end
 
   test "should get update" do
-    get :update
+    patch :update, id: users(:one).id,
+        user: {name: "Test2",
+        email: "test@example.com"},
+        format: :json
     assert_response :success
   end
 
   test "should get show" do
-    get :show
+    get :show, id: users(:one).id, format: :json
     assert_response :success
   end
 
   test "should get destroy" do
-    get :destroy
+    delete :destroy, id: users(:one), format: :json
     assert_response :success
   end
 

@@ -82,6 +82,8 @@ answer[accepted]: true
 
 ...
 
+For a complete list of database fields, please view the [Entity Relationship Diagram](https://www.lucidchart.com/publicSegments/view/156cdd3c-a8a2-4869-bd2f-04afb94d2978/image.png)
+
 # Rails Back End of Q&A Website
 
 We are creating the API of a Q&A website. Users may post questions and answers, and vote up or down on them.

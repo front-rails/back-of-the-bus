@@ -2,12 +2,12 @@ require 'test_helper'
 
 class AnswersControllerTest < ActionController::TestCase
   test "should get index" do
-    get :index
+    get :index, format: :json
     assert_response :success
   end
 
   test "should get show" do
-    get :show
+    get :show, id: answers(:one).id, format: :json
     assert_response :success
   end
 
