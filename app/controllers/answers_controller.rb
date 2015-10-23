@@ -13,7 +13,7 @@ class AnswersController < ApplicationController
   end
 
   def index
-    @answers = Answer.all
+    @answers = Answer.order('votes_quality DESC')
   end
 
   def show
