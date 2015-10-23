@@ -4,8 +4,8 @@ class CreateQuestions < ActiveRecord::Migration
       t.integer :user_id
       t.string :query
       t.text :description
-      t.integer :upvotes
-      t.integer :downvotes
+      t.integer :upvotes, default: 0
+      t.integer :downvotes, default: 0
 
       t.timestamps null: false
     end

@@ -20,6 +20,7 @@ class QuestionsController < ApplicationController
     @answers = Answer.order('votes_quality DESC')
   end
 
+
   def create
     @question = Question.create(params[question_params])
   end
