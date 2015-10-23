@@ -1,6 +1,18 @@
 class AnswersController < ApplicationController
   before_action :set_answer, except: [:create, :index]
 
+  def upvote
+    @answer.upvotes+=1
+    @answer.votes_quality+=1
+    @answer.votes_count+=1
+  end
+
+  def downvote
+    @answer.downvotes+=1
+    @answer.votes_quality-=1
+    @answer.votes_count+=1
+  end
+
   def create
     @answer = Answer.create(params[answer_params])
   end
