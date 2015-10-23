@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :set_question, except: [:create, :index]
 
+
   def create
     @question = Question.create(params[question_params])
   end

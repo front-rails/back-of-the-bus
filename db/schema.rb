@@ -17,11 +17,11 @@ ActiveRecord::Schema.define(version: 20151022211435) do
     t.integer  "user_id"
     t.integer  "question_id"
     t.text     "description"
-    t.integer  "upvotes"
-    t.integer  "downvotes"
-    t.boolean  "accepted"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.integer  "upvotes",       default: 0
+    t.integer  "downvotes",     default: 0
+    t.boolean  "accepted",      default: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.integer  "votes_quality"
   end
 
@@ -29,10 +29,10 @@ ActiveRecord::Schema.define(version: 20151022211435) do
     t.integer  "user_id"
     t.string   "query"
     t.text     "description"
-    t.integer  "upvotes"
-    t.integer  "downvotes"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.integer  "upvotes",       default: 0
+    t.integer  "downvotes",     default: 0
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.integer  "votes_quality"
   end
 
