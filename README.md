@@ -1,6 +1,10 @@
 ## Current API Endpoints
 
-GET /users - Show all users
+POST /sessions - Create a new session (Log in)
+
+DELETE /sessions - Destroy a session (Log out)
+
+========================================
 
 POST /users - Create a new user
 
@@ -22,6 +26,12 @@ PATCH /questions/id - Update a question's info
 
 DELETE /questions/id - Destroy a question
 
+GET /questions/id/search - Search questions and answers
+
+PATCH /questions/id/upvote - Upvote a question
+
+PATCH /questions/id/downvote - Downvote a question
+
 ========================================
 
 GET /answers - Show all answers
@@ -33,6 +43,12 @@ GET /answers/id - Show an answer's info
 PATCH /answers/id - Update an answer's info
 
 DELETE /answers/id - Destroy an answer
+
+PATCH /answers/id/upvote - Upvote an answer
+
+PATCH /answers/id/downvote - Downvote an answer
+
+PATCH /answers/id/accept - Toggle accepted answer
 
 # Rails Back End of Q&A Website
 

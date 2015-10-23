@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :set_question, except: [:create, :index, :search]
+  before_action :check_login, except: [:show, :index, :search]
 
   def upvote
     @question.upvotes+=1
@@ -20,6 +21,8 @@ class QuestionsController < ApplicationController
       q = "%#{params[:search]}%"
       @questions = Question.search_questions(q)
       @answers = Answer.order('votes_quality DESC')
+    else
+      render json: "No results"
     end
   end
 
@@ -43,6 +46,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    @answers = Answer.where("question_id = #{@question.id}").order('votes_quality DESC')
   end
 
   private
