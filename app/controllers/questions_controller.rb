@@ -14,6 +14,7 @@ class QuestionsController < ApplicationController
 
   def index
     @questions = Question.order('votes_quality DESC')
+    @answers = Answer.order('votes_quality DESC')
   end
 
   def show
