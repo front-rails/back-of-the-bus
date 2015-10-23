@@ -26,6 +26,7 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.create(params[question_params])
+    render 'show'
   end
 
   def destroy
