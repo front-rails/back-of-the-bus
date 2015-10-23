@@ -84,8 +84,17 @@ answer[accepted]: true
 
 For a complete list of database fields, please view the [Entity Relationship Diagram](https://www.lucidchart.com/publicSegments/view/156cdd3c-a8a2-4869-bd2f-04afb94d2978/image.png)
 
-# Rails Back End of Q&A Website
+# Rails Back End of Stack Undertow
 
 We are creating the API of a Q&A website. Users may post questions and answers, and vote up or down on them.
 
 We are a pair of Rails developers teamed with a pair of front end developers to create this app.
+
+## New Features
+* Questions and answers are now searchable
+* Users can only edit and delete things they've created
+* API can now handle responses to non-existent objects
+
+
+## Known Issues
+* Auth token is vulnerable to Session Hijacking
