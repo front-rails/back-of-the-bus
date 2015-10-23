@@ -5,12 +5,14 @@ class QuestionsController < ApplicationController
     @question.upvotes+=1
     @question.votes_quality+=1
     @question.votes_count+=1
+    @question.save
   end
 
   def downvote
     @question.downvotes+=1
     @question.votes_quality-=1
     @question.votes_count+=1
+    @question.save
   end
 
   def search

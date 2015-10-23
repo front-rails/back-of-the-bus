@@ -5,14 +5,15 @@ Rails.application.routes.draw do
       get 'search'
     end
     member do
-      post 'upvote'
-      post 'downvote'
+      patch 'upvote'
+      patch 'downvote'
     end
   end
   resources :answers, defaults: {format: :json} do
     member do
-      post 'upvote'
-      post 'downvote'
+      patch 'upvote'
+      patch 'downvote'
+      patch 'accept'
     end
   end
   resources :sessions, only: [:create, :destroy], defaults: {format: :json}
