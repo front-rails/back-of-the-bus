@@ -16,8 +16,11 @@ class QuestionsController < ApplicationController
   end
 
   def search
-    @questions = search_questions
-    @answers = Answer.order('votes_quality DESC')
+    if params[:search]
+      q = "%#{params[:search]}%"
+      @questions = Question.search_questions(q)
+      @answers = Answer.order('votes_quality DESC')
+    end
   end
 
 

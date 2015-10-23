@@ -4,13 +4,11 @@ class Question < ActiveRecord::Base
   belongs_to :user
   has_many :answers
 
-  def search_questions
-    if params[:search]
-      q = "%#{params[:search]}%"
-      search_results = Question.where("question LIKE ? OR answer LIKE ?", q, q).order('votes_quality DESC')
-      return search_results.uniq!
-    else
-    end
+  def self.search_questions(q)
+      search_results = Question.joins(:answers).
+          where("query LIKE ? OR questions.description LIKE ? OR answers.description LIKE ?", q, q, q).order('votes_quality DESC')
+      search_results.uniq!
+      return search_results
   end
 
   def votes_count

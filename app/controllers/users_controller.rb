@@ -2,10 +2,12 @@ class UsersController < ApplicationController
   before_action :set_user, except: [:create]
   def create
     @user = User.create(user_params)
+    render 'show'
   end
 
   def update
     @user.update(user_params)
+    render 'show'
   end
 
   def show
