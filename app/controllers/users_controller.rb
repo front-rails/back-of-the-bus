@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, except: [:create]
   def create
     @user = User.new(user_params)
-    render 'error' unless @user.save
+    @user.save ? (render 'show'):(render 'error')
   end
 
   def update
