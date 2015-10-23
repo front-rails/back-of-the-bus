@@ -25,8 +25,8 @@ class QuestionsController < ApplicationController
 
 
   def create
-    @question = Question.create(params[question_params])
-    render 'show'
+    @question = Question.new(question_params)
+    @question.save ? (render 'show'):(render 'error')
   end
 
   def destroy
@@ -34,6 +34,7 @@ class QuestionsController < ApplicationController
   end
 
   def update
+    @question.update(question_params) ? (render 'show'):(render 'error')
   end
 
   def index
@@ -47,7 +48,11 @@ class QuestionsController < ApplicationController
   private
 
   def set_question
-    @question = Question.find(params[:id])
+    begin
+      @question = Question.find(params[:id])
+    rescue
+      render 'not_found'
+    end
   end
 
   def question_params
