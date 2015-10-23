@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :users, except: [:new, :edit], defaults: {format: :json}
-  resources :questions, defaults: {format: :json} do
+  resources :questions, except: [:new, :edit], defaults: {format: :json} do
     collection do
       get 'search'
     end
@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       patch 'downvote'
     end
   end
-  resources :answers, defaults: {format: :json} do
+  resources :answers, except: [:new, :edit, :index], defaults: {format: :json} do
     member do
       patch 'upvote'
       patch 'downvote'

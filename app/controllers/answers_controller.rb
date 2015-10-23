@@ -1,9 +1,9 @@
 class AnswersController < ApplicationController
-  before_action :set_answer, except: [:create, :index]
-  before_action :check_login, except: [:show, :index]
+  before_action :set_answer, except: [:create]
+  before_action :check_login, except: [:show]
 
   def accept
-    if @answer.accepted == true || Question.where("id = #{@answer}.question_id").answers.all? { |a| a.accepted == false} 
+    if @answer.accepted == true || Question.where("id = #{@answer}.question_id").answers.all? { |a| a.accepted == false}
       @answer.accepted = !@answer.accepted
       @answer.save
     else
@@ -34,11 +34,7 @@ class AnswersController < ApplicationController
   end
 
   def update
-    @answer.update(question_params) ? (render 'show'):(render 'error')
-  end
-
-  def index
-    @answers = Answer.order('votes_quality DESC')
+    @answer.update(answer_params) ? (render 'show'):(render 'error')
   end
 
   def show
