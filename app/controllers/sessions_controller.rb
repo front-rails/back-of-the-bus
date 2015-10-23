@@ -11,13 +11,15 @@ class SessionsController < ApplicationController
 
   def destroy
     find_user
-    @user.token = nil
+    @user.auth_token = nil
+    @user.save
   end
 
   private
 
   def generate_token
-    @user.token = SecureRandom.hex(10)
+    @user.auth_token = SecureRandom.hex(10)
+    @user.save
   end
 
   def find_user
