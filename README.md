@@ -4,6 +4,14 @@ POST /sessions - Create a new session (Log in)
 
 DELETE /sessions - Destroy a session (Log out)
 
+Parameters MUST have the following format:
+
+email: "email@example.com"
+
+password: "password"
+
+...
+
 ========================================
 
 POST /users - Create a new user
@@ -13,6 +21,14 @@ GET /users/id - Show a user's info
 PATCH /users/id - Update a user's info
 
 DELETE /users/id - Destroy a user
+
+Parameters MUST have the following format:
+
+user[name]: "name"
+
+user[email]: "email@example.com"
+
+...
 
 ========================================
 
@@ -32,6 +48,14 @@ PATCH /questions/id/upvote - Upvote a question
 
 PATCH /questions/id/downvote - Downvote a question
 
+Parameters MUST have the following format:
+
+question[query]: "query"
+
+question[description]: "description"
+
+...
+
 ========================================
 
 GET /answers - Show all answers
@@ -49,6 +73,14 @@ PATCH /answers/id/upvote - Upvote an answer
 PATCH /answers/id/downvote - Downvote an answer
 
 PATCH /answers/id/accept - Toggle accepted answer
+
+Parameters MUST have the following format:
+
+answer[description]: "description"
+
+answer[accepted]: true
+
+...
 
 # Rails Back End of Q&A Website
 

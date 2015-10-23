@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
+  before_action :check_login, except: [:create]
   before_action :set_user, except: [:create]
+  before_action :check_user, only: [:update, :destroy]
+
   def create
     @user = User.new(user_params)
     @user.save ? (render 'show'):(render 'error')
@@ -29,5 +32,9 @@ class UsersController < ApplicationController
     rescue
       render 'not_found'
     end
+  end
+
+  def check_user
+    # render 'not_allowed' unless @user.id == params[:user_id]
   end
 end

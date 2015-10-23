@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, except: [:create, :index, :search]
   before_action :check_login, except: [:show, :index, :search]
+  before_action :set_question, except: [:create, :index, :search]
+  before_action :check_user, only: [:update, :destroy]
 
   def upvote
     @question.upvotes+=1
@@ -61,6 +62,10 @@ class QuestionsController < ApplicationController
 
   def question_params
     params.require(:question).permit(:user_id, :query, :description, :upvotes, :downvotes)
+  end
+
+  def check_user
+    # render 'not_allowed' unless @question.user_id == params[:user_id]
   end
 
 end

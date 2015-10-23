@@ -4,5 +4,5 @@ class User < ActiveRecord::Base
   has_many :answers
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
-  validates :password, presence: true
+  validates :password, presence: true, on: :create
 end

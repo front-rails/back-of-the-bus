@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   private
 
   def check_login
-  #  render json "Not logged in" unless User.find(params[:user_id]).auth_token = params[:auth_token]
+  #  render json "Not logged in" unless User.find(params[:user_id]).auth_token == params[:auth_token] &&
   return true
   end
 

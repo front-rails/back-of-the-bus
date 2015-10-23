@@ -1,9 +1,12 @@
 class AnswersController < ApplicationController
-  before_action :set_answer, except: [:create, :index]
   before_action :check_login, except: [:show, :index]
+  before_action :set_answer, except: [:create, :index]
+  before_action :check_user, only: [:update, :destroy]
+
+
 
   def accept
-    if @answer.accepted == true || Question.where("id = #{@answer}.question_id").answers.all? { |a| a.accepted == false} 
+    if @answer.accepted == true || Question.where("id = #{@answer}.question_id").answers.all? { |a| a.accepted == false}
       @answer.accepted = !@answer.accepted
       @answer.save
     else
@@ -56,5 +59,9 @@ class AnswersController < ApplicationController
 
   def answer_params
     params.require(:answer).permit(:user_id, :question_id, :description, :upvotes, :downvotes, :accepted)
+  end
+
+  def check_user
+    # render 'not_allowed' unless @answer.user_id == params[:user_id]
   end
 end
