@@ -21,7 +21,7 @@ class QuestionsController < ApplicationController
     if params[:search]
       q = "%#{params[:search]}%"
       @questions = Question.search_questions(q)
-      @answers = Answer.order('votes_quality DESC')
+      @answers = Answer.order('accepted DESC').order('votes_quality DESC')
     else
       render json: "No results"
     end
@@ -43,11 +43,11 @@ class QuestionsController < ApplicationController
 
   def index
     @questions = Question.order('votes_quality DESC')
-    @answers = Answer.order('votes_quality DESC')
+    @answers = Answer.order('accepted DESC').order('votes_quality DESC')
   end
 
   def show
-    @answers = Answer.where("question_id = #{@question.id}").order('votes_quality DESC')
+    @answers = Answer.where("question_id = #{@question.id}").order('accepted DESC').order('votes_quality DESC')
   end
 
   private

@@ -4,7 +4,6 @@ class AnswersController < ApplicationController
   before_action :check_user, only: [:update, :destroy]
 
 
-
   def accept
     if @answer.accepted == true || Question.where("id = #{@answer}.question_id").answers.all? { |a| a.accepted == false}
       @answer.accepted = !@answer.accepted
@@ -37,11 +36,7 @@ class AnswersController < ApplicationController
   end
 
   def update
-    @answer.update(question_params) ? (render 'show'):(render 'error')
-  end
-
-  def index
-    @answers = Answer.order('votes_quality DESC')
+    @answer.update(answer_params) ? (render 'show'):(render 'error')
   end
 
   def show
