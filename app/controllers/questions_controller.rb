@@ -1,5 +1,24 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, except: [:create, :index]
+  before_action :set_question, except: [:create, :index, :search]
+
+  def upvote
+    @question.upvotes+=1
+    @question.votes_quality+=1
+    @question.votes_count+=1
+    @question.save
+  end
+
+  def downvote
+    @question.downvotes+=1
+    @question.votes_quality-=1
+    @question.votes_count+=1
+    @question.save
+  end
+
+  def search
+    @questions = search_questions
+    @answers = Answer.order('votes_quality DESC')
+  end
 
 
   def create
