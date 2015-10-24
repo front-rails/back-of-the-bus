@@ -58,8 +58,6 @@ question[description]: "description"
 
 ========================================
 
-GET /answers - Show all answers
-
 POST /answers - Create a new answer
 
 GET /answers/id - Show an answer's info
