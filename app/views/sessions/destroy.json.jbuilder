@@ -1,1 +1,1 @@
-json.alert "User successfully deleted"
+json.alert "User successfully logged out"
