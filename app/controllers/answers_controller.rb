@@ -53,7 +53,7 @@ class AnswersController < ApplicationController
   end
 
   def answer_params
-    params.require(:answer).permit(:user_id, :question_id, :description, :upvotes, :downvotes, :accepted)
+    params.permit(:user_id, :question_id, :description, :upvotes, :downvotes, :accepted)
   end
 
   def check_user
