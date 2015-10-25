@@ -1,10 +1,16 @@
 class SessionsController < ApplicationController
 
   def create
-    @user = User.find_by_email(params[:email])
-    if @user && @user.authenticate(params[:password])
-      generate_token
-      @user.save
+    if params[:email] && params[:password]
+      @user = User.find_by_email(params[:email])
+      if @user && @user.authenticate(params[:password])
+        generate_token
+        @user.save
+      else
+        render json: "Invalid login"
+      end
+    else
+      render json: "You must enter an email address and password"
     end
   end
 
