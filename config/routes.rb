@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post 'login' => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
   resources :users, except: [:new, :edit], defaults: {format: :json}
   resources :questions, except: [:new, :edit], defaults: {format: :json} do
     collection do
