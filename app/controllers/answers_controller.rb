@@ -15,19 +15,18 @@ class AnswersController < ApplicationController
   def upvote
     @answer.upvotes += 1
     @answer.votes_quality += 1
-    @answer.votes_count += 1
     @answer.save
   end
 
   def downvote
     @answer.downvotes += 1
     @answer.votes_quality -= 1
-    @answer.votes_count += 1
     @answer.save
   end
 
   def create
     @answer = Answer.new(params[answer_params])
+    @answer.votes_quality = 0
     @answer.save ? (render 'show'):(render 'error')
   end
 

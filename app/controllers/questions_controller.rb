@@ -6,14 +6,12 @@ class QuestionsController < ApplicationController
   def upvote
     @question.upvotes+=1
     @question.votes_quality+=1
-    @question.votes_count+=1
     @question.save
   end
 
   def downvote
     @question.downvotes+=1
     @question.votes_quality-=1
-    @question.votes_count+=1
     @question.save
   end
 
@@ -30,6 +28,7 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
+    @question.votes_quality = 0
     @question.save ? (render 'show'):(render 'error')
   end
 

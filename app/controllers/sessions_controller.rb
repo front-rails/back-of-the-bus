@@ -15,9 +15,15 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    find_user
-    @user.auth_token = nil
-    @user.save
+    if params[:user_id]
+      find_user
+      if @user
+        @user.auth_token = nil
+        @user.save
+      end
+    else
+      render json: "Please specify a user to logout"
+    end
   end
 
   private
@@ -28,7 +34,11 @@ class SessionsController < ApplicationController
   end
 
   def find_user
-    @user = User.find(params[:user_id])
+    begin
+      @user = User.find(params[:user_id])
+    rescue
+      render json: "User not found"
+    end
   end
 
 end
