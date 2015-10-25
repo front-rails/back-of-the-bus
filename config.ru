@@ -4,7 +4,9 @@ require ::File.expand_path('../config/environment', __FILE__)
 use Rack::Cors do
   allow do
     origins '*'
-    resource '/*', :headers => :any, :methods => :get
+    resource '/*', :headers => :any,
+    :methods => [:get, :post, :put, :patch, :delete, :options, :head],
+    :expose  => ['Access-Control-Allow-Origin']
   end
 end
 run Rails.application
