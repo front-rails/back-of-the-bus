@@ -78,7 +78,7 @@ answer[description]: "description"
 
 answer[accepted]: true
 
-...
+....
 
 For a complete list of database fields, please view the [Entity Relationship Diagram](https://www.lucidchart.com/publicSegments/view/156cdd3c-a8a2-4869-bd2f-04afb94d2978/image.png)
 
