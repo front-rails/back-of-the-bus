@@ -24,9 +24,9 @@ DELETE /users/id - Destroy a user
 
 Parameters MUST have the following format:
 
-user[name]: "name"
+name: "name"
 
-user[email]: "email@example.com"
+email: "email@example.com"
 
 ...
 
@@ -50,9 +50,9 @@ PATCH /questions/id/downvote - Downvote a question
 
 Parameters MUST have the following format:
 
-question[query]: "query"
+query: "query"
 
-question[description]: "description"
+description: "description"
 
 ...
 
@@ -74,9 +74,9 @@ PATCH /answers/id/accept - Toggle accepted answer
 
 Parameters MUST have the following format:
 
-answer[description]: "description"
+description: "description"
 
-answer[accepted]: true
+accepted: true
 
 ....
 
