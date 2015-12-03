@@ -27,7 +27,11 @@ class AnswersController < ApplicationController
   def create
     @answer = Answer.new(params[answer_params])
     @answer.votes_quality = 0
-    @answer.save ? (render 'show'):(render 'error')
+    if @answer.save
+      render 'show'
+    else
+      render @answer.errors
+    end
   end
 
   def destroy
