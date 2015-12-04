@@ -15,13 +15,21 @@ class AnswersController < ApplicationController
   def upvote
     @answer.upvotes += 1
     @answer.votes_quality += 1
-    @answer.save
+    if @answer.save
+      render :show
+    else
+      render @answer.errors
+    end
   end
 
   def downvote
     @answer.downvotes += 1
     @answer.votes_quality -= 1
-    @answer.save
+    if @answer.save
+      render :show
+    else
+      render @answer.errors
+    end
   end
 
   def create
@@ -39,7 +47,11 @@ class AnswersController < ApplicationController
   end
 
   def update
-    @answer.update(answer_params) ? (render 'show'):(render 'error')
+    if @answer.update(answer_params)
+      render :show
+    else
+      render @answer.errors
+    end
   end
 
   def show

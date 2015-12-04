@@ -1,15 +1,27 @@
 class UsersController < ApplicationController
-  before_action :check_login, except: [:create]
-  before_action :set_user, except: [:create]
-  before_action :check_user, only: [:update, :destroy]
+  before_action :check_login, except: [:create, :index]
+  before_action :set_user, except: [:create, :index]
+  before_action :check_user, only: [:update, :destroy, :index]
 
   def create
     @user = User.new(user_params)
-    @user.save ? (render 'show'):(render 'error')
+    if @user.save
+      render :show
+    else
+      render @user.errors
+    end
   end
 
   def update
-    @user.update(user_params) ? (render 'show'):(render 'error')
+    if @user.update(user_params)
+      render :show
+    else
+      render @user.errors
+    end
+  end
+
+  def index
+    @users = User.all
   end
 
   def show

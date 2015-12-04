@@ -6,13 +6,21 @@ class QuestionsController < ApplicationController
   def upvote
     @question.upvotes+=1
     @question.votes_quality+=1
-    @question.save
+    if @question.save
+      render :show
+    else
+      render @question.errors
+    end
   end
 
   def downvote
     @question.downvotes+=1
     @question.votes_quality-=1
-    @question.save
+    if @question.save
+      render :show
+    else
+      render @question.errors
+    end
   end
 
   def search
@@ -29,7 +37,11 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     @question.votes_quality = 0
-    @question.save ? (render 'show'):(render 'error')
+    if @question.save
+      render :show
+    else
+      render @question.errors
+    end
   end
 
   def destroy
@@ -37,7 +49,11 @@ class QuestionsController < ApplicationController
   end
 
   def update
-    @question.update(question_params) ? (render 'show'):(render 'error')
+    if @question.update(question_params)
+      render :show
+    else
+      render @question.errors
+    end
   end
 
   def index
